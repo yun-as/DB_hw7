@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EnrollRepository extends JpaRepository<EnrollEntity, String > {
     @Override
@@ -16,6 +17,8 @@ public interface EnrollRepository extends JpaRepository<EnrollEntity, String > {
             nativeQuery = true
     )
     List<EnrollEntity> findAll();
+
+    Optional<EnrollEntity> findAllBySnoWithCourse(String sno);
 
     @Modifying
     @Transactional

@@ -28,7 +28,14 @@
 
 <body>
 <p> Student 테이블에 새로운 레코드를 삽입(추가) 했습니다.</p>
+<tr>
+    <th>Cname</th>
+    <th>Grade</th>
+    <th>Exam</th>
+</tr>
 ${student.sname}
+
+
 </body>
 </html>
 

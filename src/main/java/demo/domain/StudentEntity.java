@@ -1,10 +1,13 @@
 package demo.domain;
 
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -28,4 +31,7 @@ public class StudentEntity {
 
     @Column(name="dept")
     private String dept;
+
+    @OneToMany(mappedBy = "student")
+    private List<EnrollEntity> enrollments;
 }

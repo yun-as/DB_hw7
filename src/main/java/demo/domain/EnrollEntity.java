@@ -15,6 +15,14 @@ public class EnrollEntity {
     @Column(name = "sno")
     private String sno;
 
+    @ManyToOne
+    @JoinColumn(name = "sno", insertable = false, updatable = false)
+    private StudentEntity student;
+
+    @ManyToOne
+    @JoinColumn(name = "cno", insertable = false, updatable = false)
+    private CourseEntity course;
+
     @Column(name = "cno")
     private String cno;
 
@@ -23,4 +31,6 @@ public class EnrollEntity {
 
     @Column(name = "exam")
     private String exam;
+
+
 }
