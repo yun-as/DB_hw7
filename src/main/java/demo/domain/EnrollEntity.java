@@ -30,7 +30,7 @@ public class EnrollEntity {
     private String grade;
 
     @Column(name = "exam")
-    private String exam;
+    private int exam;
 
 
 }

@@ -25,6 +25,22 @@ public interface StudentRepository extends JpaRepository<StudentEntity, String> 
     )
     Optional<StudentEntity> findBySno(String sno);
 
+    @Query(
+            value = "SELECT sname, s.sno, e.cno, grade, exam " +
+                    "FROM ENROLL e " +
+                    "JOIN STUDENT s ON e.sno = s.sno " +
+                    "WHERE (e.exam < 60 OR (e.exam >= 60 AND e.exam <= 69) OR (e.exam >= 70 AND e.exam <= 79) OR (e.exam >= 80 AND e.exam <= 89) OR (e.exam >= 90)) AND (" +
+                    "   (e.exam < 60 AND e.grade <> 'F') OR " +
+                    "   (e.exam >= 60 AND e.exam <= 69 AND e.grade <> 'D') OR " +
+                    "   (e.exam >= 70 AND e.exam <= 79 AND e.grade <> 'C') OR " +
+                    "   (e.exam >= 80 AND e.exam <= 89 AND e.grade <> 'B') OR " +
+                    "   (e.exam >= 90 AND e.grade <> 'A')" +
+                    ")",
+            nativeQuery = true
+    )
+    List<Object[]> wrongStudent();
+
+
     @Modifying
     @Transactional
     @Query(
@@ -38,4 +54,5 @@ public interface StudentRepository extends JpaRepository<StudentEntity, String> 
             @Param("year") String year,
             @Param("dept") String dept
             );
+
 }

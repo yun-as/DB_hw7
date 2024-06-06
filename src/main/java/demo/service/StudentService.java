@@ -21,6 +21,10 @@ public class StudentService {
         return studentRepository.findBySno(sno);
     }
 
+    public List<Object[]> wrongStudent() {
+        return studentRepository.wrongStudent();
+    }
+
     public StudentEntity save(StudentEntity studentEntity) {
         studentRepository.saveOne(
                 studentEntity.getSno(),

@@ -65,6 +65,7 @@ public class CommonController {
         return modelAndView;
     }
 
+    // 전체 학생 데이터 보여줌
     @GetMapping(value = "/1-b")
     public ModelAndView firstB() {
         ModelAndView modelAndView = new ModelAndView("1-b");
@@ -80,15 +81,36 @@ public class CommonController {
     public ModelAndView getStudentBySno(@PathVariable("sno") String sno) {
         ModelAndView modelAndView = new ModelAndView("1-b-show");
 
+        // 특정 student의 sno 선택
         Optional<StudentEntity> optionalStudent = studentService.findBySno(sno);
         modelAndView.addObject("student", optionalStudent.get());
 
+        // 선택한 student가 수강하는 course 이름, 학점, 시험 점수
         List<Object[]> enrollsWithCourses = enrollService.findAllBySnoWithCourse(sno);
         modelAndView.addObject("enrolls", enrollsWithCourses);
 
+        return modelAndView;
+    }
 
+    @GetMapping(value = "/1-c")
+    public ModelAndView firstC() {
+        ModelAndView modelAndView = new ModelAndView("1-c");
+
+        List<Object[]> students = studentService.wrongStudent();
+        modelAndView.addObject("students", students);
+
+
+        // students = get wrong student
+        // view add students
 
         return modelAndView;
     }
+
+    // Post 1-c
+    // func update grade
+        // model view 1-c/form
+        // input(이름, 학번, course cno)
+        // update(점수 범위랑 등급 조건 확인)
+        // return redirect 1-c list
 }
 
