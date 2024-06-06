@@ -18,7 +18,7 @@ public class EnrollService {
         return enrollRepository.findAll();
     }
 
-    public Optional<EnrollEntity> findAllBySnoWithCourse(String sno) {
+    public List<Object[]> findAllBySnoWithCourse(String sno) {
         return enrollRepository.findAllBySnoWithCourse(sno);
     }
 

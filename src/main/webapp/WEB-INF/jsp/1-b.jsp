@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>1-a</title>
+    <title>1-b</title>
     <style>
         table {
             width: 100%;

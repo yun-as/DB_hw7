@@ -13,12 +13,16 @@ import java.util.Optional;
 public interface EnrollRepository extends JpaRepository<EnrollEntity, String > {
     @Override
     @Query(
-            value = "select * from ENROLL ",
+            value = "select * from ENROLL",
             nativeQuery = true
     )
     List<EnrollEntity> findAll();
 
-    Optional<EnrollEntity> findAllBySnoWithCourse(String sno);
+    @Query("SELECT c.cname, e.grade, e.exam " +
+            "FROM ENROLL e " +
+            "JOIN e.course c " +
+            "WHERE e.student.sno = :sno")
+    List<Object[]> findAllBySnoWithCourse(String sno);
 
     @Modifying
     @Transactional

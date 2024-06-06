@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>1-a</title>
+    <title>1-b</title>
     <style>
         table {
             width: 100%;
@@ -27,15 +27,19 @@
 </head>
 
 <body>
-<p> Student 테이블에 새로운 레코드를 삽입(추가) 했습니다.</p>
-<tr>
-    <th>Cname</th>
-    <th>Grade</th>
-    <th>Exam</th>
-</tr>
-${student.sname}
+<p>${student.sno} ${student.sname}, 수강하는 Course 이름과 학점 및 시험 점수</p>
 
+<c:forEach var="enroll" items="${enrolls}">
+    <!-- cname을 출력 -->
+    <c:out value="${enroll[0]}" /> <!-- cname -->
 
+    <!-- grade를 출력 -->
+    <c:out value="${enroll[1]}" /> <!-- grade -->
+
+    <!-- exam을 출력 -->
+    <c:out value="${enroll[2]}" /> <!-- exam -->
+    <br>
+</c:forEach>
 </body>
 </html>
 

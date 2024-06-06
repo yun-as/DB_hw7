@@ -83,8 +83,10 @@ public class CommonController {
         Optional<StudentEntity> optionalStudent = studentService.findBySno(sno);
         modelAndView.addObject("student", optionalStudent.get());
 
-        Optional<EnrollEntity> enrollsWithCourses = enrollService.findAllBySnoWithCourse(sno);
-        modelAndView.addObject("enrolls", enrollsWithCourses.get());
+        List<Object[]> enrollsWithCourses = enrollService.findAllBySnoWithCourse(sno);
+        modelAndView.addObject("enrolls", enrollsWithCourses);
+
+
 
         return modelAndView;
     }
