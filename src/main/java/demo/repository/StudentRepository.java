@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<StudentEntity, String> {
     @Override
@@ -17,6 +18,12 @@ public interface StudentRepository extends JpaRepository<StudentEntity, String> 
             nativeQuery = true
     )
     List<StudentEntity> findAll();
+
+    @Query(
+            value = "SELECT * FROM STUDENT WHERE sno = :sno",
+            nativeQuery = true
+    )
+    Optional<StudentEntity> findBySno(String sno);
 
     @Modifying
     @Transactional

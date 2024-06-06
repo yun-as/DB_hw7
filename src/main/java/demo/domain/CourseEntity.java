@@ -11,19 +11,15 @@ import lombok.*;
 @Builder
 public class CourseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cno")
     private String cno;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cname")
     private String cname;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "credit")
     private String credit;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sessions")
     private String sessions;
 }

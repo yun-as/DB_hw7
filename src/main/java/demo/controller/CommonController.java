@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CommonController {
@@ -76,12 +77,11 @@ public class CommonController {
     }
 
     @GetMapping(value = "/1-b/{sno}")
-    public ModelAndView getStudentBySno(@PathVariable("sno") int sno) {
-        ModelAndView modelAndView = new ModelAndView("1-b-1");
-        
-        // 해당 학생이 수강한 강좌 정보를 가져옴
-        List<EnrollEntity> enrollments = enrollService.findAll();
-        modelAndView.addObject("enrollments", enrollments);
+    public ModelAndView getStudentBySno(@PathVariable("sno") String sno) {
+        ModelAndView modelAndView = new ModelAndView("1-b-show");
+
+        Optional<StudentEntity> optionalStudent = studentService.findBySno(sno);
+        modelAndView.addObject("student", optionalStudent.get());
 
 
 
